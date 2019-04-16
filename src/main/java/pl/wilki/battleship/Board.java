@@ -2,7 +2,9 @@ package pl.wilki.battleship;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import pl.wilki.battleship.Field.FieldState;
 
 /**
  * @author Marcin Ogorzalek
@@ -16,7 +18,7 @@ class Board {
   Board(int height, int width) {
     this.height = height;
     this.width = width;
-    this.boardFields = new ArrayList<>(Arrays.asList(new Field[height*width]));
+    setBoardFieldsToWater();
   }
 
   Board() {
@@ -33,5 +35,10 @@ class Board {
 
   List<Field> getFields() {
     return boardFields;
+  }
+
+  private void setBoardFieldsToWater() {
+    this.boardFields = new ArrayList<>(Arrays.asList(new Field[height*width]));
+    Collections.fill(this.boardFields, new Field(FieldState.WATER));
   }
 }

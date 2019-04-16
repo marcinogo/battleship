@@ -2,7 +2,9 @@ package pl.wilki.battleship;
 
 
 import java.util.List;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pl.wilki.battleship.Field.FieldState;
 
 /**
  * @author Marcin Ogorzalek
@@ -45,5 +47,30 @@ public class BoardTest {
     System.out.println(boardFields.size());
     assert boardFields.size() == 10*10 : String.format("Board should have list of"
         + " fields with size %d", 10*10);
+  }
+
+  @DataProvider
+  public static Object[][] newDefaultBoardFieldsCheck(){
+      return new Object[][] {
+          {0, FieldState.WATER},
+          {99, FieldState.WATER},
+          {1, FieldState.WATER},
+          {98, FieldState.WATER},
+          {45, FieldState.WATER},
+          {55, FieldState.WATER},
+          {50, FieldState.WATER},
+          {51, FieldState.WATER},
+          {49, FieldState.WATER},
+          {10, FieldState.WATER},
+          {90, FieldState.WATER},
+      };
+  }
+
+  @Test(dataProvider = "newDefaultBoardFieldsCheck")
+  public void testIfNewDefaultBoardFieldsAreSetToWater(int index, FieldState fieldState) {
+    Board board = new Board();
+    Field fieldOnIndex = board.getFields().get(index);
+    assert fieldOnIndex.getFieldState().equals(fieldState) : "All fields"
+        + " should have state WATER";
   }
 }
