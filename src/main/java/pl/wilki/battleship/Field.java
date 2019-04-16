@@ -46,6 +46,10 @@ class Field {
     return new Field(FieldState.MAST);
   }
 
+  Field markMastAsHit() {
+    return new Field(FieldState.HIT_MAST);
+  }
+
   enum FieldState {
     WATER("[ ]"),
     HIT_WATER("[O]"),
