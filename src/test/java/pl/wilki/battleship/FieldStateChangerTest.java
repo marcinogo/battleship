@@ -19,6 +19,27 @@ public class FieldStateChangerTest {
     assert expected.equals(result) : "Returned Field should have state HIT_WATER";
   }
 
+  public void testIfMarkWaterAsHitReturnFieldFromParameterIfItWasNotWater1() {
+    FieldState fieldState = FieldState.MAST;
+    Field field = new Field(fieldState);
+    Field result = new FieldStateChanger().markWaterAsHit(field);
+    assert field.equals(result) : "Returned Field should still have state MAST";
+  }
+
+  public void testIfMarkWaterAsHitReturnFieldFromParameterIfItWasNotWater2() {
+    FieldState fieldState = FieldState.HIT_MAST;
+    Field field = new Field(fieldState);
+    Field result = new FieldStateChanger().markWaterAsHit(field);
+    assert field.equals(result) : "Returned Field should still have state HIT_MAST";
+  }
+
+  public void testIfMarkWaterAsHitReturnFieldFromParameterIfItWasNotWater3() {
+    FieldState fieldState = FieldState.HIT_WATER;
+    Field field = new Field(fieldState);
+    Field result = new FieldStateChanger().markWaterAsHit(field);
+    assert field.equals(result) : "Returned Field should still have state HIT_WATER";
+  }
+
   public void testIfSetMastOnWaterReturnFieldWithProperState() {
     FieldState fieldState = FieldState.WATER;
     Field field = new Field(fieldState);

@@ -8,7 +8,10 @@ import pl.wilki.battleship.Field.FieldState;
 class FieldStateChanger {
 
   Field markWaterAsHit(Field field) {
-    return new Field(FieldState.HIT_WATER);
+    if(field.getFieldState().equals(FieldState.WATER)) {
+      return new Field(FieldState.HIT_WATER);
+    }
+    return field;
   }
 
   Field setMastOnWater(Field field) {
