@@ -1,0 +1,4 @@
+# About battleship
+## Prerequisites
+## Running
+
