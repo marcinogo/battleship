@@ -1,6 +1,7 @@
 package pl.wilki.battleship;
 
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.wilki.battleship.Field.FieldState;
 
@@ -77,24 +78,47 @@ public class FieldStateChangerTest {
     assert expected.equals(result) : "Returned Field should have state HIT_MAST";
   }
 
-  public void testIfMarkMastAsHitReturnFieldFromParameterIfItWasNotWater1() {
+  public void testIfMarkMastAsHitReturnFieldFromParameterIfItWasNotMast1() {
     FieldState fieldState = FieldState.WATER;
     Field field = new Field(fieldState);
+    Field expected = new Field(FieldState.HIT_WATER);
     Field result = new FieldStateChanger().markMastAsHit(field);
-    assert field.equals(result) : "Returned Field should still have state WATER";
+    assert expected.equals(result) : "Returned Field should have state HIT_WATER";
   }
 
-  public void testIfMarkMastAsHitReturnFieldFromParameterIfItWasNotWater2() {
+  public void testIfMarkMastAsHitReturnFieldFromParameterIfItWasNotMast2() {
     FieldState fieldState = FieldState.HIT_WATER;
     Field field = new Field(fieldState);
     Field result = new FieldStateChanger().markMastAsHit(field);
     assert field.equals(result) : "Returned Field should still have state HIT_WATER";
   }
 
-  public void testIfMarkMastAsHitReturnFieldFromParameterIfItWasNotWater3() {
+  public void testIfMarkMastAsHitReturnFieldFromParameterIfItWasNotMast3() {
     FieldState fieldState = FieldState.HIT_MAST;
     Field field = new Field(fieldState);
     Field result = new FieldStateChanger().markMastAsHit(field);
     assert field.equals(result) : "Returned Field should still have state HIT_MAST";
+  }
+
+  @DataProvider
+  public static Object[][] checkChangeFieldState(){
+      return new Object[][] {
+          {GameState.SETTINGS, FieldState.WATER, FieldState.MAST},
+          {GameState.SETTINGS, FieldState.MAST, FieldState.MAST},
+          {GameState.GAME, FieldState.MAST, FieldState.HIT_MAST},
+          {GameState.GAME, FieldState.WATER, FieldState.HIT_WATER},
+          {GameState.GAME, FieldState.HIT_WATER, FieldState.HIT_WATER},
+          {GameState.GAME, FieldState.HIT_MAST, FieldState.HIT_MAST},
+      };
+  }
+
+  @Test(dataProvider = "checkChangeFieldState")
+  public void testIfChangeFieldStateReturnFieldWithProperState(GameState gameState,
+      FieldState initialState, FieldState expectedState) {
+    Field initial = new Field(initialState);
+    Field expected = new Field(expectedState);
+    Field result = new FieldStateChanger().changeFieldState(gameState, initial);
+    assert expected.equals(result) : String.format("Field should have %s state",
+        expected.getFieldState().name());
   }
 }

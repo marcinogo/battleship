@@ -7,6 +7,14 @@ import pl.wilki.battleship.Field.FieldState;
  */
 class FieldStateChanger {
 
+  Field changeFieldState(GameState gameState, Field field) {
+    if(gameState.equals(GameState.SETTINGS)) {
+      return setMastOnWater(field);
+    } else {
+      return markMastAsHit(field);
+    }
+  }
+
   Field markWaterAsHit(Field field) {
     if(field.getFieldState().equals(FieldState.WATER)) {
       return new Field(FieldState.HIT_WATER);
@@ -25,6 +33,6 @@ class FieldStateChanger {
     if(field.getFieldState().equals(FieldState.MAST)) {
     return new Field(FieldState.HIT_MAST);
     }
-    return field;
+    return markWaterAsHit(field);
   }
 }
