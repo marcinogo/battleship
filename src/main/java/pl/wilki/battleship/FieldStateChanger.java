@@ -15,7 +15,10 @@ class FieldStateChanger {
   }
 
   Field setMastOnWater(Field field) {
-    return new Field(FieldState.MAST);
+    if(field.getFieldState().equals(FieldState.WATER)) {
+      return new Field(FieldState.MAST);
+    }
+    return field;
   }
 
   Field markMastAsHit(Field field) {

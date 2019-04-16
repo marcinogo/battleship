@@ -48,6 +48,27 @@ public class FieldStateChangerTest {
     assert expected.equals(result) : "Returned Field should have state MAST";
   }
 
+  public void testIfSetMastOnWaterReturnFieldFromParameterIfItWasNotWater1() {
+    FieldState fieldState = FieldState.MAST;
+    Field field = new Field(fieldState);
+    Field result = new FieldStateChanger().setMastOnWater(field);
+    assert field.equals(result) : "Returned Field should still have state MAST";
+  }
+
+  public void testIfSetMastOnWaterReturnFieldFromParameterIfItWasNotWater2() {
+    FieldState fieldState = FieldState.HIT_WATER;
+    Field field = new Field(fieldState);
+    Field result = new FieldStateChanger().setMastOnWater(field);
+    assert field.equals(result) : "Returned Field should still have state HIT_WATER";
+  }
+
+  public void testIfSetMastOnWaterReturnFieldFromParameterIfItWasNotWater3() {
+    FieldState fieldState = FieldState.HIT_MAST;
+    Field field = new Field(fieldState);
+    Field result = new FieldStateChanger().setMastOnWater(field);
+    assert field.equals(result) : "Returned Field should still have state HIT_MAST";
+  }
+
   public void testIfMarkMastAsHitReturnFieldWithProperState() {
     FieldState fieldState = FieldState.MAST;
     Field field = new Field(fieldState);
