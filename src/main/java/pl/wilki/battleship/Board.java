@@ -13,6 +13,10 @@ class Board {
     this.width = width;
   }
 
+  public Board() {
+    this(10, 10);
+  }
+
   int getHeight() {
     return height;
   }

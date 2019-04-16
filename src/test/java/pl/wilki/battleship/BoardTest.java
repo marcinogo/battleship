@@ -19,4 +19,12 @@ public class BoardTest {
     Board board = new Board(10, width);
     assert board.getWidth() == width : String.format("Board width should be %d", width);
   }
+
+  public void testIfCreatedDefaultBoardHaveProperDimensions() {
+    int height = 10;
+    int width = 10;
+    Board board = new Board();
+    assert board.getHeight() == height : String.format("Board height should be %d", height);
+    assert board.getWidth() == width : String.format("Board width should be %d", width);
+  }
 }
