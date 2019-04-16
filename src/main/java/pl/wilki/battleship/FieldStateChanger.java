@@ -22,6 +22,9 @@ class FieldStateChanger {
   }
 
   Field markMastAsHit(Field field) {
+    if(field.getFieldState().equals(FieldState.MAST)) {
     return new Field(FieldState.HIT_MAST);
+    }
+    return field;
   }
 }
