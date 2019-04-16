@@ -90,28 +90,4 @@ public class FieldTest {
     Field field2 = new Field(fieldState2);
     assert field1.hashCode() != field2.hashCode() : "Fields hashCode should be different";
   }
-
-  public void testIfMarkWaterAsHitReturnFieldWithProperState() {
-    FieldState fieldState = FieldState.WATER;
-    Field field = new Field(fieldState);
-    Field expected = new Field(FieldState.HIT_WATER);
-    Field result = field.markWaterAsHit();
-    assert expected.equals(result) : "Returned Field should have state HIT_WATER";
-  }
-
-  public void testIfSetMastOnWaterReturnFieldWithProperState() {
-    FieldState fieldState = FieldState.WATER;
-    Field field = new Field(fieldState);
-    Field expected = new Field(FieldState.MAST);
-    Field result = field.setMastOnWater();
-    assert expected.equals(result) : "Returned Field should have state MAST";
-  }
-
-  public void testIfMarkMastAsHitReturnFieldWithProperState() {
-    FieldState fieldState = FieldState.MAST;
-    Field field = new Field(fieldState);
-    Field expected = new Field(FieldState.HIT_MAST);
-    Field result = field.markMastAsHit();
-    assert expected.equals(result) : "Returned Field should have state HIT_MAST";
-  }
 }

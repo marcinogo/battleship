@@ -38,18 +38,6 @@ class Field {
     return Objects.hash(fieldState);
   }
 
-  Field markWaterAsHit() {
-    return new Field(FieldState.HIT_WATER);
-  }
-
-  Field setMastOnWater() {
-    return new Field(FieldState.MAST);
-  }
-
-  Field markMastAsHit() {
-    return new Field(FieldState.HIT_MAST);
-  }
-
   enum FieldState {
     WATER("[ ]"),
     HIT_WATER("[O]"),
