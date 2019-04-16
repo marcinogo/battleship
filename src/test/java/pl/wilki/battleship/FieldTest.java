@@ -24,7 +24,7 @@ public class FieldTest {
     public void testIfFieldHaveHitWaterState() {
       FieldState fieldState = FieldState.HIT_WATER;
       Field field = new Field(fieldState);
-      assert field.getFieldState().equals(fieldState) : "Field should have state WATER";
+      assert field.getFieldState().equals(fieldState) : "Field should have state HIT_WATER";
     }
 
     public void testIfHitWaterFieldIsProperRepresented() {
@@ -32,6 +32,12 @@ public class FieldTest {
       Field field = new Field(fieldState);
       assert field.toString().equals("[O]") : "Field with WATER should be represented as [O]";
     }
+
+  public void testIfFieldHaveMastState() {
+    FieldState fieldState = FieldState.MAST;
+    Field field = new Field(fieldState);
+    assert field.getFieldState().equals(fieldState) : "Field should have state MAST";
+  }
 
   public void testIfTwoFieldsWithWaterAreEqual() {
     FieldState fieldState = FieldState.WATER;
