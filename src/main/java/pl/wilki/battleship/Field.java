@@ -38,6 +38,10 @@ class Field {
     return Objects.hash(fieldState);
   }
 
+  Field markWaterAsHit() {
+    return new Field(FieldState.HIT_WATER);
+  }
+
   enum FieldState {
     WATER("[ ]"),
     HIT_WATER("[O]"),
