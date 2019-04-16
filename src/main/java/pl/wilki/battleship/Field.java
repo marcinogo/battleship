@@ -1,5 +1,7 @@
 package pl.wilki.battleship;
 
+import java.util.Objects;
+
 /**
  * @author Marcin Ogorzalek
  */
@@ -19,8 +21,21 @@ class Field {
     return fieldState;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Field field = (Field) o;
+    return fieldState == field.fieldState;
+  }
+
   enum FieldState {
-    WATER("[ ]");
+    WATER("[ ]"),
+    HIT_WATER("[O]");
 
     private String representation;
 
