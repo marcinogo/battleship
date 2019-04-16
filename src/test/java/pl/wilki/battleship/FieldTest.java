@@ -39,6 +39,12 @@ public class FieldTest {
     assert field.getFieldState().equals(fieldState) : "Field should have state MAST";
   }
 
+  public void testIfMastFieldIsProperRepresented() {
+    FieldState fieldState = FieldState.MAST;
+    Field field = new Field(fieldState);
+    assert field.toString().equals("[*]") : "Field with WATER should be represented as [*]";
+  }
+
   public void testIfTwoFieldsWithWaterAreEqual() {
     FieldState fieldState = FieldState.WATER;
     Field field1 = new Field(fieldState);
