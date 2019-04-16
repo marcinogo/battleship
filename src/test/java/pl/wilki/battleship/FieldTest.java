@@ -21,6 +21,18 @@ public class FieldTest {
     assert field.toString().equals("[ ]") : "Field with WATER should be represented as [ ]";
   }
 
+    public void testIfFieldHaveHitWaterState() {
+      FieldState fieldState = FieldState.HIT_WATER;
+      Field field = new Field(fieldState);
+      assert field.getFieldState().equals(fieldState) : "Field should have state WATER";
+    }
+
+    public void testIfHitWaterFieldIsProperRepresented() {
+      FieldState fieldState = FieldState.HIT_WATER;
+      Field field = new Field(fieldState);
+      assert field.toString().equals("[O]") : "Field with WATER should be represented as [O]";
+    }
+
   public void testIfTwoFieldsWithWaterAreEqual() {
     FieldState fieldState = FieldState.WATER;
     Field field1 = new Field(fieldState);
