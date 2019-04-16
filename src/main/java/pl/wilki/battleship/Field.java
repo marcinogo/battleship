@@ -33,6 +33,11 @@ class Field {
     return fieldState == field.fieldState;
   }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(fieldState);
+  }
+
   enum FieldState {
     WATER("[ ]"),
     HIT_WATER("[O]");

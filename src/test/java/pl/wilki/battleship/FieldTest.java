@@ -48,4 +48,32 @@ public class FieldTest {
     Field field2 = new Field(fieldState2);
     assert !field1.equals(field2) : "Fields should not be equals";
   }
+
+  public void testIfTwoFieldsWithWaterHaveEqualHashcode() {
+    FieldState fieldState = FieldState.WATER;
+    Field field1 = new Field(fieldState);
+    Field field2 = new Field(fieldState);
+    assert field1.hashCode() == field2.hashCode() : "Fields hashCode should be equals";
+  }
+
+  public void testIfFieldWithWaterHaveEqualHashcodeToItself() {
+    FieldState fieldState = FieldState.WATER;
+    Field field = new Field(fieldState);
+    assert field.hashCode() == field.hashCode() : "Fields hashCode should be equals";
+  }
+
+  public void testIfTwoFieldsWithWaterAndNullHaveNotEqualHashcode() {
+    FieldState fieldState = FieldState.WATER;
+    Field field1 = new Field(fieldState);
+    Field field2 = new Field(null);
+    assert field1.hashCode() != field2.hashCode() : "Fields hashCode should be different";
+  }
+
+  public void testIfTwoFieldsWithWaterAndHitWaterHaveNotEqualHashcode() {
+    FieldState fieldState1 = FieldState.WATER;
+    FieldState fieldState2 = FieldState.HIT_WATER;
+    Field field1 = new Field(fieldState1);
+    Field field2 = new Field(fieldState2);
+    assert field1.hashCode() != field2.hashCode() : "Fields hashCode should be different";
+  }
 }
