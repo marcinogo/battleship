@@ -36,7 +36,6 @@ public class BoardTest {
     int width = 20;
     Board board = new Board(height, width);
     List<Field> boardFields = board.getFields();
-    System.out.println(boardFields.size());
     assert boardFields.size() == height*width : String.format("Board should have list of"
         + " fields with size %d", height*width);
   }
@@ -44,7 +43,6 @@ public class BoardTest {
   public void testIfCreatedDefaultBoardHaveFieldsListWithProperSize() {
     Board board = new Board();
     List<Field> boardFields = board.getFields();
-    System.out.println(boardFields.size());
     assert boardFields.size() == 10*10 : String.format("Board should have list of"
         + " fields with size %d", 10*10);
   }
