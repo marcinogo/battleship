@@ -1,6 +1,7 @@
 package pl.wilki.battleship;
 
 
+import java.util.List;
 import org.testng.annotations.Test;
 
 /**
@@ -26,5 +27,23 @@ public class BoardTest {
     Board board = new Board();
     assert board.getHeight() == height : String.format("Board height should be %d", height);
     assert board.getWidth() == width : String.format("Board width should be %d", width);
+  }
+
+  public void testIfCreatedBoardHaveFieldsListWithProperSize() {
+    int height = 15;
+    int width = 20;
+    Board board = new Board(15, 20);
+    List<Field> boardFields = board.getFields();
+    System.out.println(boardFields.size());
+    assert boardFields.size() == 15*20 : String.format("Board should have list of"
+        + " fields with size %d", 15*20);
+  }
+
+  public void testIfCreatedDefaultBoardHaveFieldsListWithProperSize() {
+    Board board = new Board();
+    List<Field> boardFields = board.getFields();
+    System.out.println(boardFields.size());
+    assert boardFields.size() == 10*10 : String.format("Board should have list of"
+        + " fields with size %d", 10*10);
   }
 }

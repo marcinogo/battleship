@@ -1,5 +1,9 @@
 package pl.wilki.battleship;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Marcin Ogorzalek
  */
@@ -7,13 +11,15 @@ package pl.wilki.battleship;
 class Board {
   private int height;
   private int width;
+  private List<Field> boardFields;
 
   Board(int height, int width) {
     this.height = height;
     this.width = width;
+    this.boardFields = new ArrayList<>(Arrays.asList(new Field[height*width]));
   }
 
-  public Board() {
+  Board() {
     this(10, 10);
   }
 
@@ -23,5 +29,9 @@ class Board {
 
   int getWidth() {
     return width;
+  }
+
+  List<Field> getFields() {
+    return boardFields;
   }
 }
