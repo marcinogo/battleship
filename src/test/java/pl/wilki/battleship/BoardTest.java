@@ -32,11 +32,11 @@ public class BoardTest {
   public void testIfCreatedBoardHaveFieldsListWithProperSize() {
     int height = 15;
     int width = 20;
-    Board board = new Board(15, 20);
+    Board board = new Board(height, width);
     List<Field> boardFields = board.getFields();
     System.out.println(boardFields.size());
-    assert boardFields.size() == 15*20 : String.format("Board should have list of"
-        + " fields with size %d", 15*20);
+    assert boardFields.size() == height*width : String.format("Board should have list of"
+        + " fields with size %d", height*width);
   }
 
   public void testIfCreatedDefaultBoardHaveFieldsListWithProperSize() {
