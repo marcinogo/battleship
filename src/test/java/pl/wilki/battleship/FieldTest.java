@@ -98,4 +98,12 @@ public class FieldTest {
     Field result = field.markWaterAsHit();
     assert expected.equals(result) : "Returned Field should have state HIT_WATER";
   }
+
+  public void testIfSetMastOnWaterReturnFieldWithProperState() {
+    FieldState fieldState = FieldState.WATER;
+    Field field = new Field(fieldState);
+    Field expected = new Field(FieldState.MAST);
+    Field result = field.setMastOnWater();
+    assert expected.equals(result) : "Returned Field should have state MAST";
+  }
 }
