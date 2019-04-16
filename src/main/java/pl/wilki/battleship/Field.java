@@ -10,11 +10,27 @@ class Field {
     this.fieldState = fieldState;
   }
 
+  @Override
+  public String toString() {
+    return fieldState.toString();
+  }
+
   FieldState getFieldState() {
     return fieldState;
   }
 
   enum FieldState {
-    WATER
+    WATER("[ ]");
+
+    private String representation;
+
+    FieldState(String representation) {
+      this.representation = representation;
+    }
+
+    @Override
+    public String toString() {
+      return representation;
+    }
   }
 }
