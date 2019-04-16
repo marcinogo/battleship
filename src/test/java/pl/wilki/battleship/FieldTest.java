@@ -1,5 +1,6 @@
 package pl.wilki.battleship;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.wilki.battleship.Field.FieldState;
 
@@ -9,40 +10,29 @@ import pl.wilki.battleship.Field.FieldState;
 
 @Test
 public class FieldTest {
-  public void testIfFieldHaveWaterState() {
-    FieldState fieldState = FieldState.WATER;
-    Field field = new Field(fieldState);
-    assert field.getFieldState().equals(fieldState) : "Field should have state WATER";
+
+  @DataProvider
+  public static Object[][] createField(){
+      return new Object[][] {
+          {FieldState.WATER, "[ ]"},
+          {FieldState.HIT_WATER, "[O]"},
+          {FieldState.MAST, "[*]"},
+          {FieldState.HIT_MAST, "[X]"},
+      };
   }
 
-  public void testIfWaterFieldIsProperRepresented() {
-    FieldState fieldState = FieldState.WATER;
+  @Test(dataProvider = "createField")
+  public void testIfFieldHaveCorrectState(FieldState fieldState, String representation) {
     Field field = new Field(fieldState);
-    assert field.toString().equals("[ ]") : "Field with WATER should be represented as [ ]";
+    assert field.getFieldState().equals(fieldState) : String.format("Field should have state %s",
+        fieldState.name());
   }
 
-    public void testIfFieldHaveHitWaterState() {
-      FieldState fieldState = FieldState.HIT_WATER;
-      Field field = new Field(fieldState);
-      assert field.getFieldState().equals(fieldState) : "Field should have state HIT_WATER";
-    }
-
-    public void testIfHitWaterFieldIsProperRepresented() {
-      FieldState fieldState = FieldState.HIT_WATER;
-      Field field = new Field(fieldState);
-      assert field.toString().equals("[O]") : "Field with WATER should be represented as [O]";
-    }
-
-  public void testIfFieldHaveMastState() {
-    FieldState fieldState = FieldState.MAST;
+  @Test(dataProvider = "createField")
+  public void testIfFieldIsProperRepresented(FieldState fieldState, String representation) {
     Field field = new Field(fieldState);
-    assert field.getFieldState().equals(fieldState) : "Field should have state MAST";
-  }
-
-  public void testIfMastFieldIsProperRepresented() {
-    FieldState fieldState = FieldState.MAST;
-    Field field = new Field(fieldState);
-    assert field.toString().equals("[*]") : "Field with WATER should be represented as [*]";
+    assert field.toString().equals(representation) : String.format("Field with %s should be"
+        + " represented as %s", fieldState.name(), representation);
   }
 
   public void testIfTwoFieldsWithWaterAreEqual() {

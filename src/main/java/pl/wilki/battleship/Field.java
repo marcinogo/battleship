@@ -41,7 +41,8 @@ class Field {
   enum FieldState {
     WATER("[ ]"),
     HIT_WATER("[O]"),
-    MAST("[*]");
+    MAST("[*]"),
+    HIT_MAST("[X]");
 
     private String representation;
 
