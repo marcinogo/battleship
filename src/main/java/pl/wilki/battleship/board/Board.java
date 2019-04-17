@@ -23,7 +23,7 @@ class Board {
   }
 
   private List<Field> setBoardFieldsToWater() {
-    List<Field> boardFields = new ArrayList<>(Arrays.asList(new Field[height*width]));
+    List<Field> boardFields = new ArrayList<>(Arrays.asList(new Field[height * width]));
     Collections.fill(boardFields, new Field(FieldState.WATER));
     return boardFields;
   }
@@ -40,7 +40,7 @@ class Board {
 
   private List<Field> copyBoardFields(List<Field> boardFields) {
     List<Field> copyList = new ArrayList<>();
-    for(Field field: boardFields) {
+    for (Field field: boardFields) {
       copyList.add(field.copyField());
     }
     return copyList;

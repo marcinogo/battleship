@@ -30,14 +30,14 @@ class Field {
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) {
+  public boolean equals(Object obj) {
+    if (this == obj) {
       return true;
     }
-    if (o == null || getClass() != o.getClass()) {
+    if (obj == null || getClass() != obj.getClass()) {
       return false;
     }
-    Field field = (Field) o;
+    Field field = (Field) obj;
     return fieldState == field.fieldState;
   }
 

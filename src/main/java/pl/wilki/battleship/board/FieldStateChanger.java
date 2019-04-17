@@ -9,7 +9,7 @@ import pl.wilki.battleship.board.Field.FieldState;
 class FieldStateChanger {
 
   Field changeFieldState(GameState gameState, Field field) {
-    if(gameState.equals(GameState.SETTINGS)) {
+    if (gameState.equals(GameState.SETTINGS)) {
       return setMastOnWater(field);
     } else {
       return markMastAsHit(field);
@@ -17,22 +17,22 @@ class FieldStateChanger {
   }
 
   private Field markWaterAsHit(Field field) {
-    if(field.getFieldState().equals(FieldState.WATER)) {
+    if (field.getFieldState().equals(FieldState.WATER)) {
       return new Field(FieldState.HIT_WATER);
     }
     return field;
   }
 
   private Field setMastOnWater(Field field) {
-    if(field.getFieldState().equals(FieldState.WATER)) {
+    if (field.getFieldState().equals(FieldState.WATER)) {
       return new Field(FieldState.MAST);
     }
     return field;
   }
 
   private Field markMastAsHit(Field field) {
-    if(field.getFieldState().equals(FieldState.MAST)) {
-    return new Field(FieldState.HIT_MAST);
+    if (field.getFieldState().equals(FieldState.MAST)) {
+      return new Field(FieldState.HIT_MAST);
     }
     return markWaterAsHit(field);
   }
