@@ -52,7 +52,7 @@ class Field {
     MAST("[*]"),
     HIT_MAST("[X]");
 
-    private String representation;
+    private final String representation;
 
     FieldState(String representation) {
       this.representation = representation;

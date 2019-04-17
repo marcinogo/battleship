@@ -57,7 +57,7 @@ public class FieldTest {
   public void testIfFieldIsNotEqualToAnyObject2() {
     FieldState fieldState = FieldState.WATER;
     Field field = new Field(fieldState);
-    assert !field.equals(new String("[ ]")) : "Fields should not be equals";
+    assert !field.equals("[ ]") : "Fields should not be equals";
   }
 
   public void testIfFieldsWithWaterAndNullAreNotEqual() {
