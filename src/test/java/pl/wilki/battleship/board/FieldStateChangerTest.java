@@ -1,9 +1,10 @@
-package pl.wilki.battleship;
+package pl.wilki.battleship.board;
 
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pl.wilki.battleship.Field.FieldState;
+import pl.wilki.battleship.GameState;
+import pl.wilki.battleship.board.Field.FieldState;
 
 /**
  * @author Marcin Ogorzalek

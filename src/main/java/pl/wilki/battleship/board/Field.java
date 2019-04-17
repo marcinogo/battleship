@@ -1,4 +1,4 @@
-package pl.wilki.battleship;
+package pl.wilki.battleship.board;
 
 import java.util.Objects;
 
@@ -6,10 +6,18 @@ import java.util.Objects;
  * @author Marcin Ogorzalek
  */
 class Field {
-  private FieldState fieldState;
+  private final FieldState fieldState;
 
   Field(FieldState fieldState) {
     this.fieldState = fieldState;
+  }
+
+  private Field(Field originalField) {
+    this(originalField.fieldState);
+  }
+
+  Field copyField() {
+    return new Field(this);
   }
 
   @Override
