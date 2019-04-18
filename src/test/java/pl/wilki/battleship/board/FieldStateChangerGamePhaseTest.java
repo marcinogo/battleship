@@ -13,8 +13,8 @@ public class FieldStateChangerGamePhaseTest {
 
 
   @DataProvider
-  public static Object[][] checkChangeFieldState(){
-    return new Object[][] {
+  public static Object[][] checkChangeFieldState() {
+    return new Object[][]{
         {FieldState.MAST, FieldState.HIT_MAST},
         {FieldState.WATER, FieldState.HIT_WATER},
         {FieldState.HIT_WATER, FieldState.HIT_WATER},

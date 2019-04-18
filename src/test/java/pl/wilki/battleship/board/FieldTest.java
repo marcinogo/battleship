@@ -12,13 +12,13 @@ import pl.wilki.battleship.board.Field.FieldState;
 public class FieldTest {
 
   @DataProvider
-  public static Object[][] createField(){
-      return new Object[][] {
-          {FieldState.WATER, "[ ]"},
-          {FieldState.HIT_WATER, "[O]"},
-          {FieldState.MAST, "[*]"},
-          {FieldState.HIT_MAST, "[X]"},
-      };
+  public static Object[][] createField() {
+    return new Object[][]{
+        {FieldState.WATER, "[ ]"},
+        {FieldState.HIT_WATER, "[O]"},
+        {FieldState.MAST, "[*]"},
+        {FieldState.HIT_MAST, "[X]"},
+    };
   }
 
   @Test(dataProvider = "createField")

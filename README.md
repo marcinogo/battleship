@@ -12,5 +12,6 @@ Flowchart of application:
 Java 11, Maven 3.6.0
 
 ## Running
-use command: mvn clean install
+use command: mvn spring-boot:run
+
 

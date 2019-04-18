@@ -12,8 +12,8 @@ import pl.wilki.battleship.board.Field.FieldState;
 public class FieldStateChangerSettingPhaseTest {
 
   @DataProvider
-  public static Object[][] checkChangeFieldState(){
-    return new Object[][] {
+  public static Object[][] checkChangeFieldState() {
+    return new Object[][]{
         {FieldState.MAST, FieldState.MAST},
         {FieldState.WATER, FieldState.MAST},
         {FieldState.HIT_WATER, FieldState.HIT_WATER},
