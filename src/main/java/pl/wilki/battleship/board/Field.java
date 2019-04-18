@@ -46,6 +46,9 @@ class Field {
     return Objects.hash(fieldState);
   }
 
+  /**
+   * Represent all possible states of Board fields during game.
+   */
   enum FieldState {
     WATER("[ ]"),
     HIT_WATER("[O]"),
