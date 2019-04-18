@@ -9,7 +9,7 @@ Flowchart of application:
 ![flowchart](battleship.png)
 
 ## Prerequisites
-Java 11, Maven 3.5.3
+Java 11, Maven 3.6.o
 
 ## Running
 use command: mvn clean install
