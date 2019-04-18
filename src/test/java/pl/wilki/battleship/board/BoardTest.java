@@ -4,7 +4,6 @@ package pl.wilki.battleship.board;
 import java.util.List;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pl.wilki.battleship.GameState;
 import pl.wilki.battleship.board.Field.FieldState;
 
 /**
@@ -76,36 +75,36 @@ public class BoardTest {
   @DataProvider
   public static Object[][] setFieldCheck(){
     return new Object[][] {
-        {GameState.GAME, 0, FieldState.HIT_WATER},
-        {GameState.GAME, 1, FieldState.HIT_WATER},
-        {GameState.GAME, 99, FieldState.HIT_WATER},
-        {GameState.GAME, 98, FieldState.HIT_WATER},
-        {GameState.GAME, 45, FieldState.HIT_WATER},
-        {GameState.GAME, 55, FieldState.HIT_WATER},
-        {GameState.GAME, 50, FieldState.HIT_WATER},
-        {GameState.GAME, 51, FieldState.HIT_WATER},
-        {GameState.GAME, 49, FieldState.HIT_WATER},
-        {GameState.GAME, 10, FieldState.HIT_WATER},
-        {GameState.GAME, 90, FieldState.HIT_WATER},
-        {GameState.SETTINGS, 0, FieldState.MAST},
-        {GameState.SETTINGS, 1, FieldState.MAST},
-        {GameState.SETTINGS, 99, FieldState.MAST},
-        {GameState.SETTINGS, 98, FieldState.MAST},
-        {GameState.SETTINGS, 45, FieldState.MAST},
-        {GameState.SETTINGS, 55, FieldState.MAST},
-        {GameState.SETTINGS, 50, FieldState.MAST},
-        {GameState.SETTINGS, 51, FieldState.MAST},
-        {GameState.SETTINGS, 49, FieldState.MAST},
-        {GameState.SETTINGS, 10, FieldState.MAST},
-        {GameState.SETTINGS, 90, FieldState.MAST},
+        {new FieldStateChangerGamePhase(), 0, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 1, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 99, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 98, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 45, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 55, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 50, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 51, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 49, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 10, FieldState.HIT_WATER},
+        {new FieldStateChangerGamePhase(), 90, FieldState.HIT_WATER},
+        {new FieldStateChangerSettingPhase(), 0, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 1, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 99, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 98, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 45, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 55, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 50, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 51, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 49, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 10, FieldState.MAST},
+        {new FieldStateChangerSettingPhase(), 90, FieldState.MAST},
     };
   }
 
   @Test(dataProvider = "setFieldCheck")
-  public void testIfBoardFieldOnIndexIsSet(GameState gameState,
+  public void testIfBoardFieldOnIndexIsSet(FieldStateChanger fieldStateChanger,
       int index, FieldState expectedFieldState) {
     Board board = new Board();
-    Board resultBoard = board.changeFieldState(gameState, index);
+    Board resultBoard = board.changeFieldState(fieldStateChanger, index);
     Field expected = new Field(expectedFieldState);
     assert expected.equals(resultBoard.getFields().get(index)) : "Fields should be equals";
   }
@@ -113,26 +112,26 @@ public class BoardTest {
   @DataProvider
   public static Object[][] setMastFieldCheck(){
     return new Object[][] {
-        {GameState.GAME, 0, FieldState.HIT_MAST},
-        {GameState.GAME, 1, FieldState.HIT_MAST},
-        {GameState.GAME, 99, FieldState.HIT_MAST},
-        {GameState.GAME, 98, FieldState.HIT_MAST},
-        {GameState.GAME, 45, FieldState.HIT_MAST},
-        {GameState.GAME, 55, FieldState.HIT_MAST},
-        {GameState.GAME, 50, FieldState.HIT_MAST},
-        {GameState.GAME, 51, FieldState.HIT_MAST},
-        {GameState.GAME, 49, FieldState.HIT_MAST},
-        {GameState.GAME, 10, FieldState.HIT_MAST},
-        {GameState.GAME, 90, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 0, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 1, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 99, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 98, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 45, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 55, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 50, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 51, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 49, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 10, FieldState.HIT_MAST},
+        {new FieldStateChangerGamePhase(), 90, FieldState.HIT_MAST},
     };
   }
 
   @Test(dataProvider = "setMastFieldCheck")
-  public void testIfBoardFieldOnIndexIsSetIfHadMastState(GameState gameState,
+  public void testIfBoardFieldOnIndexIsSetIfHadMastState(FieldStateChanger fieldStateChanger,
       int index, FieldState expectedFieldState) {
     Board board = new Board();
     board.getFields().set(index, new Field(FieldState.MAST));
-    Board resultBoard = board.changeFieldState(gameState, index);
+    Board resultBoard = board.changeFieldState(fieldStateChanger, index);
     Field expected = new Field(expectedFieldState);
     assert expected.equals(resultBoard.getFields().get(index)) : "Fields should be equals";
   }

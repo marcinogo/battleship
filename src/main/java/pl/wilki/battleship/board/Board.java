@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import pl.wilki.battleship.GameState;
 import pl.wilki.battleship.board.Field.FieldState;
 
 /**
@@ -58,11 +57,12 @@ class Board {
     return boardFields;
   }
 
-  Board changeFieldState(GameState gameState, int index) {
+  Board changeFieldState(FieldStateChanger fieldStateChanger, int index) {
     Board copy = new Board(this);
     Field oldField = copy.boardFields.get(index);
-    Field newField = new FieldStateChanger().changeFieldState(gameState, oldField);
+    Field newField = fieldStateChanger.changeFieldState(oldField);
     copy.boardFields.set(index, newField);
     return copy;
   }
+
 }
