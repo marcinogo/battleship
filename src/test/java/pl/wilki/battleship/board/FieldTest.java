@@ -48,6 +48,12 @@ public class FieldTest {
     assert field.equals(field) : "Fields should be equals";
   }
 
+  public void testIfFieldIsNotEqualToNull() {
+    FieldState fieldState = FieldState.WATER;
+    Field field = new Field(fieldState);
+    assert !field.equals(null) : "Fields should not be equals";
+  }
+
   public void testIfFieldIsNotEqualToAnyObject1() {
     FieldState fieldState = FieldState.WATER;
     Field field = new Field(fieldState);
