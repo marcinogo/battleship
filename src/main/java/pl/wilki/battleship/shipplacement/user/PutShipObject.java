@@ -1,14 +1,14 @@
 package pl.wilki.battleship.shipplacement.user;
 
-public class PutShipObject {
+class PutShipObject {
 
   private boolean shiftPressed;
   private int id;
 
-  public PutShipObject() {
+  PutShipObject() {
   }
 
-  public PutShipObject(int id, boolean shiftPressed) {
+  PutShipObject(int id, boolean shiftPressed) {
     this.shiftPressed = shiftPressed;
     this.id = id;
   }
@@ -17,7 +17,7 @@ public class PutShipObject {
     return id;
   }
 
-  public void setId(int id) {
+  void setId(int id) {
     this.id = id;
   }
 
@@ -25,7 +25,7 @@ public class PutShipObject {
     return shiftPressed;
   }
 
-  public void setShiftPressed(boolean shiftPressed) {
+  void setShiftPressed(boolean shiftPressed) {
     this.shiftPressed = shiftPressed;
   }
 

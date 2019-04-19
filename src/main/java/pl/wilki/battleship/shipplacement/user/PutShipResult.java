@@ -3,6 +3,7 @@ package pl.wilki.battleship.shipplacement.user;
 import java.util.List;
 
 /**
+ * For Spring object. Holds information about PutShipResult, such as if it is valid, and list of fields to mark.
  * @author Kacper Staszek
  */
 class PutShipResult {
@@ -19,7 +20,7 @@ class PutShipResult {
     this.valid = valid;
   }
 
-  public PutShipResult result(List<Integer> fieldsOfShip, boolean valid) {
+  PutShipResult result(List<Integer> fieldsOfShip, boolean valid) {
     return new PutShipResult(fieldsOfShip, valid);
   }
 

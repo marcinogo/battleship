@@ -15,9 +15,12 @@ class RandomShipsController {
   @Autowired
   private ShipGenerator generator;
 
+  /**
+   * @return Ships object, witch have list of fields to mark on board.
+   */
   @MessageMapping("/ships")
   @SendTo("/topic/randomShipsOnBoard")
-  public Ships field() throws Exception {
+  public Ships field() {
     return new Ships(generator.generateShips());
   }
 }

@@ -12,7 +12,7 @@ import pl.wilki.battleship.board.Field.FieldState;
 public class FieldStateChangerSettingPhaseTest {
 
   @DataProvider
-  public static Object[][] checkChangeFieldState() {
+  public static Object[][] provideInitialAndExpectedFieldState() {
     return new Object[][]{
         {FieldState.MAST, FieldState.MAST},
         {FieldState.WATER, FieldState.MAST},
@@ -21,7 +21,7 @@ public class FieldStateChangerSettingPhaseTest {
     };
   }
 
-  @Test(dataProvider = "checkChangeFieldState")
+  @Test(dataProvider = "provideInitialAndExpectedFieldState")
   public void testIfChangeFieldStateReturnFieldWithProperState(FieldState initialState,
       FieldState expectedState) {
     FieldStateChanger fieldStateChanger = new FieldStateChangerSettingPhase();

@@ -12,7 +12,7 @@ import pl.wilki.battleship.board.Field.FieldState;
 public class FieldTest {
 
   @DataProvider
-  public static Object[][] createField() {
+  public static Object[][] provideDateToFieldCreation() {
     return new Object[][]{
         {FieldState.WATER, "[ ]"},
         {FieldState.HIT_WATER, "[O]"},
@@ -21,14 +21,14 @@ public class FieldTest {
     };
   }
 
-  @Test(dataProvider = "createField")
+  @Test(dataProvider = "provideDateToFieldCreation")
   public void testIfFieldHaveCorrectState(FieldState fieldState, String representation) {
     Field field = new Field(fieldState);
     assert field.getFieldState().equals(fieldState) : String.format("Field should have state %s",
         fieldState.name());
   }
 
-  @Test(dataProvider = "createField")
+  @Test(dataProvider = "provideDateToFieldCreation")
   public void testIfFieldIsProperRepresented(FieldState fieldState, String representation) {
     Field field = new Field(fieldState);
     assert field.toString().equals(representation) : String.format("Field with %s should be"

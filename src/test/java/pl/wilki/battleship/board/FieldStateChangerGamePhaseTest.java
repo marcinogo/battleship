@@ -13,7 +13,7 @@ public class FieldStateChangerGamePhaseTest {
 
 
   @DataProvider
-  public static Object[][] checkChangeFieldState() {
+  public static Object[][] provideInitialAndExpectedFieldState() {
     return new Object[][]{
         {FieldState.MAST, FieldState.HIT_MAST},
         {FieldState.WATER, FieldState.HIT_WATER},
@@ -22,7 +22,7 @@ public class FieldStateChangerGamePhaseTest {
     };
   }
 
-  @Test(dataProvider = "checkChangeFieldState")
+  @Test(dataProvider = "provideInitialAndExpectedFieldState")
   public void testIfChangeFieldStateReturnFieldWithProperState(FieldState initialState,
       FieldState expectedState) {
     FieldStateChanger fieldStateChanger = new FieldStateChangerGamePhase();

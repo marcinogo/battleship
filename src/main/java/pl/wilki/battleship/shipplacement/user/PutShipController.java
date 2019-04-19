@@ -16,34 +16,39 @@ class PutShipController {
   @Autowired
   private ShipPutValidator shipPutValidator;
 
+  /**
+   * @param putShipObject contains all information about putting ship try.
+   * @return result of trying to put ship on given field. If attempt is valid, than it generates list of fields where ship will be placed.
+   */
   @MessageMapping("/putShip")
   @SendTo("/topic/putMyShipMan")
-  public PutShipResult shot(PutShipObject putShipObject) throws Exception {
-    /*
-     * ONLY FOR TEST IMPLEMENTATION. HAVE TO CREATE JAVA CLASS THAT TAKES BOOLEAN VERTICAL/HORIZONTAL, AND ID, AND RETURNS PutShipResult valid Object!!!!
-     * in final version we would use class that returns list of fields to mark. PEACE
-     * */
-    int id = putShipObject.getId();
-    boolean shiftPressed = putShipObject.isShiftPressed();
-    List<Integer> toReturn = new ArrayList<>();
-    if (shiftPressed) {
+  public PutShipResult shot(PutShipObject putShipObject) {
 
-      for (int i = 0; i < 4; i++) {
-        int toAdd = id + i;
-        System.out.println(toAdd);
-        toReturn.add(toAdd);
-      }
+    List<Integer> toReturn = new ArrayList<>();
+    if (putShipObject.isShiftPressed()) {
+      createShipVertical(putShipObject.getId(), toReturn);
     } else {
-      for (int i = 0; i < 40; i += 10) {
-        int toAdd = id + i;
-        toReturn.add(toAdd);
-      }
+      createShipHorizontal(putShipObject.getId(), toReturn);
     }
 
-    if (shipPutValidator.isValid(putShipObject)) {
+    if (shipPutValidator.isValid(putShipObject))
       return new PutShipResult(toReturn, true);
-    } else {
-      return new PutShipResult(null, false);
+
+    return new PutShipResult(null, false);
+
+  }
+
+  private void createShipHorizontal(int id, List<Integer> toReturn) {
+    for (int i = 0; i < 40; i += 10) {
+      int toAdd = id + i;
+      toReturn.add(toAdd);
+    }
+  }
+
+  private void createShipVertical(int id, List<Integer> toReturn) {
+    for (int i = 0; i < 4; i++) {
+      int toAdd = id + i;
+      toReturn.add(toAdd);
     }
   }
 
