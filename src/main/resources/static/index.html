@@ -21,7 +21,7 @@
         <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="connect">WebSocket connection:</label>
+                    <label for="connect">Connect to the server:</label>
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
                     <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
                     </button>
@@ -48,25 +48,8 @@
         <button id="randomShips" class="btn btn-default" type="submit">Random ships</button>
     </div>
 
-    <script>
-for(i = 0; i < 100; i++) {
-let button = document.createElement("button");
-let buttonEnemy = document.createElement("button");
-let buttonDiv = document.getElementById("left_board");
-let buttonEnemyDiv = document.getElementById("right_board");
+    <script src="generateBoard.js"></script>
 
-button.id = i
-buttonEnemy.id = i+100
-
-button.className = "mybutton"
-buttonEnemy.className = "enemybutton"
-
-buttonDiv.appendChild(button);
-buttonEnemyDiv.appendChild(buttonEnemy)
-
-}
-
-    </script>
 </div>
 
 <div class="row">

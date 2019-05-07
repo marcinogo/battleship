@@ -49,29 +49,31 @@ function tryToPlaceShip(shiftKey,id){
   stompClient.send("/app/putShip", {} ,JSON.stringify({'shiftPressed': shiftKeyResult, 'id':id}));
 }
 
+function objectToMap(obj) {
+    const map = new Map;
+    Object.keys (obj).forEach (k => { map.set(k, obj[k]) });
+    return map;
+}
+
 function putShipOnBoard(result){
-if(result.valid){
-    var ship = result.fieldsOfShip;
-    for (var i in ship){
-        var button = document.getElementById(ship[i]);
-        button.style.background="#000000";
-        }
+    if(result.valid){
+      myMap = objectToMap(result.fieldsOfShip);
+
+    for (var [key, value] of myMap) {
+        var button = document.getElementById(key);
+        button.style.background=value;
+      }
     } else{
     alert("Invalid");
     }
 }
 
-function startGame() {
-    stompClient.send("/app/color", {}, JSON.stringify({'color': $("#name").val()}));
-}
+//function startGame() {
+//    stompClient.send("/app/color", {}, JSON.stringify({'color': $("#name").val()}));
+//}
 
 function sendShips() {
     stompClient.send("/app/ships", {}, JSON.stringify({'ships': $("#name").val()}));
-}
-
-function changeColor(color) {
-    var button =  document.getElementById("send2");
-    button.style.background=color;
 }
 
 function clearBoard(){

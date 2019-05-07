@@ -22,11 +22,15 @@ class ShipGenerator {
   private List<Integer> randomShipPlacementVersionThree = new ArrayList<>();
   private List<Integer> randomShipPlacementVersionFour = new ArrayList<>();
 
-  List<Integer> generateShips() {
+  {
     fillRandomPlacementVersionOneWithShips();
     fillRandomPlacementVersionTwoWithShips();
     fillRandomPlacementVersionThreeWithShips();
     fillRandomPlacementVersionFourWithShips();
+  }
+
+  List<Integer> generateShips() {
+
     int randomInt = 0;
     while (randomInt == lastRandomNumber) {
       randomInt = random.nextInt(4);
@@ -49,7 +53,7 @@ class ShipGenerator {
 
   private void fillRandomPlacementVersionThreeWithShips() {
     randomShipPlacementVersionThree.addAll(Arrays
-        .asList(99, 89, 79, 69, 0, 1, 2, 9, 27, 28, 29, 65, 66, 70, 80, 20, 30, 33, 63, 59, 84));
+        .asList(89, 79, 69, 0, 1, 2, 9, 27, 28, 29, 65, 66, 70, 80, 20, 30, 33, 63, 59, 84));
     listOfRandomPlacements.add(randomShipPlacementVersionThree);
 
   }
