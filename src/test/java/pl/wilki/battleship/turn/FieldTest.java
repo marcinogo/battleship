@@ -14,10 +14,10 @@ public class FieldTest {
   @DataProvider
   public static Object[][] givenFieldAndExpectedColorRepresentation(){
       return new Object[][] {
-          {Field.WATER, "WHITE"},
-          {Field.WATER_SHOT, "BLUE"},
-          {Field.SHIP, "RED"},
-          {Field.SHIP_SHOT, "BLACK"}
+          {Field.WATER, "#FEFDFD"},
+          {Field.WATER_SHOTED, "#10DDE8"},
+          {Field.SHIP, "#111111"},
+          {Field.SHIP_SHOTED, "#F50D18"}
       };
   }
 

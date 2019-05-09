@@ -4,10 +4,10 @@ package pl.wilki.battleship.turn;
  * @author Marcin Ogorzalek
  */
 public enum Field {
-  WATER("WHITE"),
-  WATER_SHOT("BLUE"),
-  SHIP("RED"),
-  SHIP_SHOT("BLACK");
+  WATER("#FEFDFD"),
+  WATER_SHOTED("#10DDE8"),
+  SHIP("#111111"),
+  SHIP_SHOTED("#F50D18");
 
   private String color;
 
