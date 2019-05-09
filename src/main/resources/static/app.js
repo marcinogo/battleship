@@ -22,7 +22,7 @@ function connect() {
             showGreeting(JSON.parse(greeting.body).content);
         });
 
-        stompClient.subscribe('/topic/randomShipsOnBoard', function (ships) {
+        stompClient.subscribe('/user/topic/randomShipsOnBoard', function (ships) {
                 showRandomShips(JSON.parse(ships.body).ships);
         });
 
@@ -68,12 +68,9 @@ function putShipOnBoard(result){
     }
 }
 
-//function startGame() {
-//    stompClient.send("/app/color", {}, JSON.stringify({'color': $("#name").val()}));
-//}
-
-function sendShips() {
-    stompClient.send("/app/ships", {}, JSON.stringify({'ships': $("#name").val()}));
+function sendRandomShips() {
+    var name = "kacpi"
+    stompClient.send("user/"+name+"/app/ships", {}, JSON.stringify({'ships': $("#name").val()}));
 }
 
 function clearBoard(){
@@ -104,13 +101,12 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendMessage(); });
     $( "#start" ).click(function() { startGame(); });
-    $( "#randomShips" ).click(function() { sendShips(); });
+    $( "#randomShips" ).click(function() { sendRandomShips(); });
     for(i=0;i<200;i++){
      $( "#"+i).click(function(event) {
         var isShiftPressed = event.shiftKey;
         var id=event.target.id;
         tryToPlaceShip(isShiftPressed,id); });
         }
-
 });
 

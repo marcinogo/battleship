@@ -1,12 +1,11 @@
 package pl.wilki.battleship.shipplacement.user;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -23,7 +22,7 @@ class PutShipController {
    * @return result of trying to put ship on given field. If attempt is valid, than it generates list of fields where ship will be placed.
    */
   @MessageMapping("/putShip")
-  @SendTo("/topic/putMyShipMan")
+  @SendToUser("/topic/putMyShipMan")
   public PutShipResult shot(PutShipObject putShipObject) {
 
     Map<Integer,String> toReturn = new HashMap<>();

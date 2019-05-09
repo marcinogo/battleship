@@ -2,7 +2,7 @@ package pl.wilki.battleship.shipplacement.random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -19,7 +19,7 @@ class RandomShipsController {
    * @return Ships object, witch have list of fields to mark on board.
    */
   @MessageMapping("/ships")
-  @SendTo("/topic/randomShipsOnBoard")
+  @SendToUser("/queue/randomShipsOnBoard")
   public Ships field() {
     return new Ships(generator.generateShips());
   }
