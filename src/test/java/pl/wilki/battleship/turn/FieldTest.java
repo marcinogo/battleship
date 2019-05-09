@@ -15,9 +15,9 @@ public class FieldTest {
   public static Object[][] givenFieldAndExpectedColorRepresentation(){
       return new Object[][] {
           {Field.WATER, "#FEFDFD"},
-          {Field.WATER_SHOTED, "#10DDE8"},
+          {Field.WATER_SHOOTED, "#10DDE8"},
           {Field.SHIP, "#111111"},
-          {Field.SHIP_SHOTED, "#F50D18"}
+          {Field.SHIP_SHOOTED, "#F50D18"}
       };
   }
 

@@ -5,9 +5,9 @@ package pl.wilki.battleship.turn;
  */
 public enum Field {
   WATER("#FEFDFD"),
-  WATER_SHOTED("#10DDE8"),
+  WATER_SHOOTED("#10DDE8"),
   SHIP("#111111"),
-  SHIP_SHOTED("#F50D18");
+  SHIP_SHOOTED("#F50D18");
 
   private String color;
 
